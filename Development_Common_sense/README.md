@@ -1,9 +1,9 @@
 
 # Development Common sense
 
- - [절차적 프로그래밍](#절차적프로그래밍)
- - [객체 지향 프로그래밍](#객체지향프로그래밍)
- - [함수형 프로그래밍](#함수형프로그래밍)
+ - [절차적 프로그래밍](#절차적-프로그래밍)
+ - [객체 지향 프로그래밍](#객체-지향-프로그래밍)
+ - [함수형 프로그래밍](#함수형-프로그래밍)
 
 </br>
 </br>
@@ -32,11 +32,12 @@
 
 </br>
 
+
 ### Referencing and Citation
 - [절차적 프로그래밍](https://velog.io/@pneuma/%EC%A0%88%EC%B0%A8%EC%A0%81-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D)
 - [절차지향](http://www.incodom.kr/%EC%A0%88%EC%B0%A8_%EC%A7%80%ED%96%A5)
 
-</br>
+---
 </br>
 
 ## 객체 지향 프로그래밍
@@ -133,7 +134,7 @@
 - [객체 지향 프로그래밍이 뭔가요?](https://jeong-pro.tistory.com/95)
 - [객체 지향에 대한 이해 / 객체 지향적 설계](https://asfirstalways.tistory.com/177)
 
-</br>
+---
 </br>
 
 ## 함수형 프로그래밍
