@@ -153,12 +153,97 @@
 
 ### RESTful API란?
 
-REST API(RESTful API, 레스트풀 API)란 REST 아키
+**REST API**(RESTful API, 레스트풀 API)란 <u>월드 와이드 웹(WWW)과 같은 분산 하이퍼미디어 시스템을 위한 소프트웨어 아키텍쳐의 한 형식</u>이다.
+
+**REST**는 <u>REpresentational State Transfer</u>의 약자이다. 여기에 ~ful 이라는 형용사형 어미를 붙여 ~한 API라는 표현으로 사용된다. 즉, REST의 기본 원칙을 지킨 서비스 디자인은 'RESTful'하다고 할 수 있다.
+
+**API**(Application Programming Interface)는 <u>어플리케이션 소프트웨어를 구축하고 통합하는 정의 및 프로토콜 세트</u>이다.
+
+</br>
+
+### REST의 구성
+
+ - **자원(RESOURCE)** - URI
+ - **행위(Verb)** - HTTP METHOD
+ - **표현(Representations)**
+
+</br>
+
+### REST의 특징
+
+1. Uniform (유니폼 인터페이스)
+
+    Uniform Interface는 URI로 지정한 리소스에 대한 조작을 통일되고 한정적인 인터페이스로 수행하는 아키텍처 스타일을 말한다.
+
+2. Stateless (무상태성)
+
+    REST는 무상태성 성격을 가지고 있다. 무상태성 성격이란 작업을 위한 상태정보를 따로 저장하고 관리하지 않는 것이다. 세션 정보나 쿠키 정보를 별도로 저장하고 관리하지 않기 때문에 API 서버는 들어오는 요청만을 단순히 처리하면 된다. 이 때문에 서비스의 자유도가 높아지고 서버에서 불필요한 정보를 관리하지 않음으로써 구현이 단순해진다.
+
+3. Cacheable (캐시 가능)
+
+    REST의 가장 큰 특징 중 하나는 HTTP라는 기존 웹표준을 그대로 사용하기 때문에, 웹에서 사용하는 기존 인프라를 그대로 활용이 가능하다. 따라서 HTTP가 가진 캐싱 기능이 적용 가능하다. HTTP 프로토콜 표준에서 사용하는 Last-Modified 태그나 E-Tag를 이용하면 캐싱 구현이 가능하다.
+
+4. Self-descriptiveness (자체 표현 구조)
+
+    REST의 토 따른 큰 특징 중 하나는 REST API 메시지만 보고도 이를 쉽게 이해 할 수 있는 자체 표현 구조로 되어 있다는 것이다.
+
+5. Client - Sever 구조
+
+    REST 서버는 API 제공, 클라이언트는 사용자 인증이나 컨텍스트(세션 로그인 정보)등을 직접 관리하는 구조로 각각의 역할이 확실히 구분되기 때문에 클라이언트와 서버에서 개발해야 할 내용이 명확해지고 서로간 의존성이 줄어들게 된다.
+
+6. 계층형 구조
+
+    REST 서버는 다중 계층으로 구성될 수 있으며 보안, 로드 밸런싱, 암호화 계층을 추가해 구조상의 유연성을 둘 수 있고 PROXY, 게이트웨이 같은 네트워크 기반의 중간매체를 사용할 수 있게 한다.
+
+</br>
+
+### RESTful 하게 API를 디자인 한다는 것
+
+1. **자원**(Resource)과 **행위**(Verb)를 명시적이고 직관적으로 분리한다.
+   
+   * **자원**은 <u>URI</u>로 표현되는데 리소스가 가리키는 것은 <u>명사</u>로 표현되어야 한다.
+   * **행위**는 <u>HTTP Method</u>로 표현하고 <u>GET(조회), POST(생성), PUT(기존 entity 전체 수정), PATCH(기존 entity 일부 수정), DELETE(삭제)</u>를 분명한 목적으로 사용한다.
+
+2. Message는 Header와 Body를 명확하게 분리해서 사용한다.
+   
+   * <u>Entity에 대한 내용</u>은 <u>body</u>에 담는다.
+   * <u>어플리케이션 서버가 행동할 판단의 근거가 되는 컨트롤 정보</u>인 API 버전 정보, 응답받고자 하는 MIME 타입 등은 <u>header</u>에 담는다.
+   * header와 body는 http header와 http body로 나눌 수도 있고, http body에 들어가는 json 구조로 분리할 수도 있다.
+
+3. API 버전을 관리한다.
+   
+    * 환경은 항상 변하기 때문에 API의 <u>signature가 변경될 수 있음에 유의</u>해야 한다.
+    * 특정 API를 변경할 때는 반드시 <u>하위호환성을 보장</u>해야 한다.
+
+4. 서버와 클라이언트가 같은 방식을 사용해서 요청하도록 한다.
+   
+   * 브라우저는 form-data 형식의 submit으로 보내고 서버에서는 json 형태로 보내는 식의 분리보다는 json으로 보내든, 둘 다 form-data 형식으로 보내든 <u>하나로 통일</u>한다.
+   * 즉, URI가 플랫폼 중립적이어야 한다.
+
+</br>
+
+### RESTful API 장점
+
+1. Open API를 제공하기 쉽다.
+2. 멀티플랫폼 지원 및 연동이 용이하다.
+3. 원하는 타입으로 데이터를 주고 받을 수 있다.
+4. 기존 웹 인프라(HTTP)를 그대로 사용할 수 있다.
+
+</br>
+
+### RESTful API 단점
+
+1. 사용할 수 있는 메소드가 4가지 밖에 없다.
+2. 분산환경에는 부적합하다.
+3. HTTP 통신 모델에 대해서만 지원한다.
 
 </br>
 
 ### Referencing and Citation
-- 
+- [REST 아키텍처를 위한 디자인 팁](https://spoqa.github.io/2012/02/27/rest-introduction.html)
+- [REST API 제대로 알고 사용하기](https://meetup.toast.com/posts/92)
+- [REST API란? 구현 및 사용법](https://www.redhat.com/ko/topics/api/what-is-a-rest-api)
+- [위키백과 - REST](https://ko.wikipedia.org/wiki/REST)
 
 ---
 </br>
